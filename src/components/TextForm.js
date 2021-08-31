@@ -28,6 +28,7 @@ function TextForm(props) {
     copybtn.innerHTML = "Copied To Clipboard";
     document.execCommand("copy");
     props.ShowAlert("Copied To Clipboard Successfully!", "success");
+    document.getSelection().removeAllRanges();
   };
 
   const HandleExtraSpacesClick = () => {
@@ -63,49 +64,67 @@ function TextForm(props) {
             required
           ></textarea>
         </div>
-        <button className="btn btn-success mt-2" onClick={HandleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mt-2"
+          onClick={HandleUpClick}
+        >
           Convert To UpperCase
         </button>
-        <button className="btn btn-success mt-2 ms-2" onClick={HandleLoClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-success mt-2 ms-xl-2 ms-md-2 ms-sm-1"
+          onClick={HandleLoClick}
+        >
           Convert To LowerCase
         </button>
         <button
-          className="btn btn-success mt-2 ms-2"
+          disabled={text.length === 0}
+          className="btn btn-success mt-2 ms-xl-2 ms-md-2 ms-sm-1"
           id="copybtn"
           onClick={HandleCopyClick}
         >
           CopyText
         </button>
         <button
-          className="btn btn-success mt-2 ms-2"
+          disabled={text.length === 0}
+          className="btn btn-success mt-2 ms-xl-2 ms-md-2 ms-sm-1"
           onClick={HandleExtraSpacesClick}
         >
           Remove ExtraSpaces
         </button>
         <button
-          className="btn btn-success mt-2 ms-2"
+          disabled={text.length === 0}
+          className="btn btn-success mt-2 ms-xl-2 ms-md-2 ms-sm-1"
           onClick={HandleClearClick}
         >
           Clear Text
         </button>
       </div>
       <div
-        className="container mt-5 text-center"
+        className="container mt-5 text-center border-bottom mb-5"
         style={{
           color: props.Mode === "dark" ? "white" : "black",
         }}
       >
         <h1 className="dark-text fs-1">Your Text Summary</h1>
         <p className="text-secondary">
-          {text.split(" ").length} Word {text.length} Characters
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          Word {text.length} Characters
         </p>
         <p className="text-secondary">
-          {0.008 * text.split(" ").length} Minutes Read
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes Read
         </p>
         <h2 className="mt-4">Text Preview</h2>
-        <p className="fs-5">
-          {text.length > 0 ? text : "Enter Something To Preview It Here"}
-        </p>
+        <p className="fs-5">{text.length > 0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );

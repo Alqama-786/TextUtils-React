@@ -2,17 +2,12 @@ import React from "react";
 // import { Link } from "react-router-dom";
 
 function Navbar(props) {
-  const ReloadPage = () => {
-    let reload = window.location.reload();
-    console.log(reload);
-  };
-
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.Mode} bg-${props.Mode}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/null">
           TextUtils
         </a>
         <button
@@ -29,7 +24,7 @@ function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <a className="nav-link active" href="/null">
                 Home
               </a>
             </li>
@@ -78,11 +73,6 @@ function Navbar(props) {
             >
               Enable DarkMode
             </label>
-          </div>
-          <div className="ms-3">
-            <button className="btn btn-primary" onClick={ReloadPage}>
-              Reload Page
-            </button>
           </div>
         </div>
       </div>

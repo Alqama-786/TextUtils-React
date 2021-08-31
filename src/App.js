@@ -3,7 +3,7 @@ import "./App.css";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm";
-// import About from "./components/About";
+import About from "./components/About";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -39,22 +39,14 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
       <Navbar Mode={Mode} ToggleMode={ToggleMode} />
       <Alert Alert={alert} />
-      {/* <Switch> */}
-      {/* <Route path="/About"> */}
-      {/* <About /> */}
-      {/* </Route> */}
-      {/* <Route path="/"> */}
       <TextForm
         heading="Enter The Text To Analyze Below"
         Mode={Mode}
         ShowAlert={ShowAlert}
       />
-      {/* </Route>
-        </Switch>
-      </Router> */}
+      <About Mode={Mode}/>
     </>
   );
 }
