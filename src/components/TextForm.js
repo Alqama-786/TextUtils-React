@@ -4,12 +4,10 @@ function TextForm(props) {
   const [text, settext] = useState("");
 
   const HandleOnchange = (event) => {
-    // console.log("On Change");
     settext(event.target.value);
   };
 
   const HandleUpClick = () => {
-    // console.log("Button Was Clicked");
     let UpText = text.toUpperCase();
     settext(UpText);
     props.ShowAlert("Converted To Uppercase!", "success");
@@ -102,7 +100,7 @@ function TextForm(props) {
         </button>
       </div>
       <div
-        className="container mt-5 text-center border-bottom mb-5"
+        className="container mt-5 text-center mb-2"
         style={{
           color: props.Mode === "dark" ? "white" : "black",
         }}
@@ -110,7 +108,7 @@ function TextForm(props) {
         <h1 className="dark-text fs-1">Your Text Summary</h1>
         <p className="text-secondary">
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}

@@ -1,12 +1,6 @@
-// import React, { useState } from "react";
+import React from "react";
 
 export default function About(props) {
-  // const [DarkModeStyle, SetDarkModeStyle] = useState({
-  //   transition: "all 0.6s ease",
-  //   color: "white",
-  //   backgroundColor: "black",
-  // });
-
   let DarkModeStyle = {
     color: props.Mode === "dark" ? "white" : "black",
     borderColor: props.Mode === "dark" ? "#fff" : "black",
